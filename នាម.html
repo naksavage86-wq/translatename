@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Khmer Name Converter</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#0f172a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    width:500px;
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,.3);
+}
+
+h2{
+    text-align:center;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    font-size:20px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.result{
+    margin-top:15px;
+    padding:15px;
+    background:#f1f5f9;
+    font-size:22px;
+    border-radius:8px;
+    min-height:30px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Khmer → English</h2>
+
+    <input
+        type="text"
+        id="khmer"
+        placeholder="វាយឈ្មោះខ្មែរ..."
+        oninput="convert()">
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+function convert() {
+
+    let text = document.getElementById("khmer").value;
+
+    const map = {
+
+        "ប៊យ":"Boy",
+        "អូន":"Oun",
+        "បង":"Bong",
+        "វឌ្ឍនះ":"Vatanak",
+        "អា":"ah",
+        "ក":"k",
+        "ខ":"kh",
+        "គ":"k",
+        "ឃ":"kh",
+        "ង":"ng",
+
+
+        "ច":"ch",
+        "ឆ":"ch",
+        "ជ":"j",
+        "ឈ":"chh",
+        "ញ":"nh",
+
+        "ដ":"d",
+        "ឋ":"th",
+        "ឌ":"d",
+        "ឍ":"th",
+        "ណ":"n",
+
+        "ត":"t",
+        "ទ":"t",
+        "ធ":"th",
+        "ន":"n",
+
+        "ប":"b",
+        "ផ":"p",
+        "ព":"p",
+        "ភ":"ph",
+        "ម":"m",
+
+        "យ":"y",
+        "រ":"r",
+        "ល":"l",
+        "វ":"v",
+        "ស":"s",
+        "ហ":"h",
+        "អ":"a",
+
+        "ា":"a",
+        "ិ":"i",
+        "ី":"ey",
+        "ុ":"u",
+        "ូ":"ou",
+        "ួ":"uo",
+        "េ":"e",
+        "ែ":"ae",
+        "ៃ":"ai",
+        "ោ":"o",
+        "ៅ":"ao"
+    };
+
+    let result = "";
+
+    for (let char of text) {
+
+        // រំលង បន្តក់ និង ជើងអក្សរ
+        if (
+            char === "់" ||
+            char === "្" ||
+            char === "ះ" ||
+            char === "ំ"||
+            char === "៊"
+        ) {
+            continue;
+        }
+
+        result += map[char] || char;
+    }
+
+    document.getElementById("result").innerText = result;
+}
+</script>
+
+</body>
+</html>
